@@ -16,7 +16,7 @@ In this section we will try to understand why we need a VCS and what would be ou
 * Come with a client utility through which you would be uploading/downloading code to/from FTP server and it should make sure that you are not overriding the latest code available in FTP server.
 
 ## Learning
-In this section you will get to know about VCS, various terms associated with it such as 
+In this section you got to know about VCS, various terms associated with VCS such as:
 * Repo Server
 * Pull
 * Push
