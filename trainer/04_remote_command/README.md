@@ -22,9 +22,8 @@ In this section we will build understanding around git remote repo management
 
 ### Good To Do
 * Get the latest code from remote repo without using *git pull* command
-* Create 2 repositories in you Git Lab account *Repo1* & *Repo2* in *Repo1*. Create 2 branches *branchR11 and branchR12* in *Repo1*, similarly create 2 branches *branchR21 and branchR22* in *Repo2*. Now merge code of branch *branchR11* in *Repo1* to *branchR22* in *Repo2*.
 * Simulate above problem where instead of GitLab you would be using Git file server
-* Simulate above problem where instead of GitLab you would be your custom Git SSH server
+* Simulate above problem where instead of GitLab you would be using custom Git SSH server
 
 ## Learning
 In this section you learned all the basic commands of git to manage local repository
