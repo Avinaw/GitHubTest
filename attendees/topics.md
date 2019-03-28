@@ -84,9 +84,9 @@
 	1. Best possible practices
 
 11. Good to know: Advance git concept
-        1. Integration	  
-    	  a. Jira Integration    
-    	  b. Slack Integration      	
-        2. Objects  
-        3. git submodules	  
+        - Integration	  
+    	  - Jira Integration    
+    	  - Slack Integration      	
+        - Objects  
+        - git submodules	  
 
