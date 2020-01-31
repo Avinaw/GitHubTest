@@ -1,0 +1,57 @@
+FTP CONFIGURE
+
+check ufw status
+sudo ufw allow 20/tcp	(for data tranfer among vsftpd and client) 
+sudo ufw allow 21/tcp	(for connection maintenance of ftp)
+sudo ufw allow 990/tls   	( for tls certificate )
+sudo ufw allow 40000:50000  (Enabled as psav range is given is used)
+
+Then configure
+
+I have configured my vsftpd.conf manually. I have uploaded a copy of my vsftpd.conf
+
+1. anonymous_enable=NO
+
+enabling it will make any other to log to communicate to our ftp server.
+2. local_enable=YES 		(for local user)
+
+3. write_enable=YES
+to allow others to write on ftp hosted machine
+
+4.chroot_local_user=YES
+user_sub_token=$USER
+local_root=/home/$USER/central 
+
+Enabling it will make client to access certain directory. Even if they enter cd / they will go to this directory . Chroot concept.
+
+5. pasv_min_port=40000
+    pasv_max_port=50000
+Specifying available ports to use as random port while transferring in passive connection
+
+6.
+userlist_enable=YES
+userlist_file=/etc/vsftpd.userlist
+userlist_deny=NO
+
+Conent in vsftpd.userlist
+alex
+(alex can access)
+
+Here we can specify user whose credentials to use while logging. 
+
+Subsequently we can also use userlist_deny to disable or restrict user present.
+7.
+Generate ssl certificate using
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem
+Enter contry name 
+etc..
+8.
+paste the located keys in conf file
+
+rsa_cert_file=/etc/ssl/private/vsftpd.pem
+rsa_private_key_file=/etc/ssl/private/vsftpd.pem
+
+9.
+Enable ssl_enalable=yes
+10.
+ssl_tlsv1=YES
