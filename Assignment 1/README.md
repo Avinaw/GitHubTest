@@ -1,4 +1,3 @@
-
 # FTP CONFIGURE<h1>
 
 check ufw status
@@ -59,7 +58,7 @@ ssl_tlsv1=YES
 
 
  
- Transfer
+# <h1> Transfer
 
 type ftp  in command prompt 
 
