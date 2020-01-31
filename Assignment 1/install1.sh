@@ -70,10 +70,6 @@ echo $ostype;
    echo "root" |tee -a /etc/vsftpd.userlist
    systemctl restart vsftpd
 
-
-   #  cat testfile < /etc/vsftpd.conf
-   systemctl restart vsftpd
-
 fi
 
 
