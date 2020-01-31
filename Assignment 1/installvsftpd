@@ -1,0 +1,90 @@
+#! /bin/bash 
+
+### In this script i am installing a vsftpd using script
+### Run this script using sudo
+
+source deb
+source redhat
+source check
+source already
+
+#check is used to find os distribution
+#already is to check if given package is already installed or not
+
+start_fun()
+{
+fun_already_installed ;
+if [ "$?" == 0 ]
+then
+##Already install don't do anything
+return 0;
+
+else
+
+## Start installation 
+echo "Installing"
+
+###First check distribution
+### if return status is 1 then it is debian
+### if return status is 2 then it is red hat
+### if return status is 3 then it is other like arc whose support is not available right now.
+w=$( echo "$?" );
+
+####
+if [ "$w" == "1"  ]
+then
+
+fun_deb_install  ;
+
+
+elif [ "$w" == "2" ]
+then
+
+fun_red_install  ;
+
+else
+
+return 10;
+
+
+fi
+####
+
+
+return 1;
+fi
+
+
+
+}
+
+main()
+{
+start_fun ;
+status=$(echo "$?" );
+
+
+if [ "$status" == "0" ]
+then
+echo "Task completed... Already Installed "
+##Already install dont do anything
+
+elif [ "$status" == "1"   ]
+then 
+####Installed
+echo "Task Completed .. Installed"
+
+elif [ "$status" == "10"  ]
+then
+echo -e  "Task Completed .. Unsupported Package \n Install manually"
+
+else
+echo "Their is some internal operation  error"
+echo "Use sudo while running this script"
+
+fi
+
+}
+main;
+
+
