@@ -1,0 +1,20 @@
+#! /bin/bash
+
+
+fun_already_installed()
+{
+alreadyinstallcheck=$(which vsftpd);
+alreadyinstallflag=$( echo "$alreadyinstallcheck" | wc -l );
+#echo "$alreadyinstallflag"
+if [ "$alreadyinstallflag" == "1"  ]
+then
+echo "ALREADY INSTALLED"
+return 0;
+
+
+else
+echo "NOT INSTALLED"
+return 15;
+fi
+
+}
