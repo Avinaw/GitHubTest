@@ -1,4 +1,5 @@
 FTP CONFIGURE
+Manually 
 
 check ufw status
 sudo ufw allow 20/tcp	(for data tranfer among vsftpd and client) 
