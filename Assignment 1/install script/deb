@@ -1,0 +1,36 @@
+#! /bin/bash
+
+
+fun_deb_install ()
+{
+
+apt-get update;
+local checkstatus_update="$?";
+
+if [ "$checkstatus_update"  == 0 ]
+then
+
+apt-get install vsftpd -y ;
+
+local checkstatus_install="$?";
+
+if [ "$checkstatus_update"  == 0 ]
+then
+echo "INSTALLED VSFTPD SUCCESSFULLY"
+return 0;
+
+else
+echo "Failed while installing"
+return 55;
+fi
+
+
+else
+
+echo "Failed while updating repository"
+return 50;
+
+fi
+
+}
+
