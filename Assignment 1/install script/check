@@ -1,0 +1,28 @@
+#! /bin/bash
+
+fun_check_distribution()
+{
+
+###Fisrt check for debian and redhat
+local debflag=$(ls /etc/ | grep -i "deb" | wc -l )
+## if it is debian then it must have a debian_version file in /etc subsequently in redhat
+local redflag=$(ls /etc/ | grep -i "red" | wc -l )
+
+if [ "$debflag" != "0"  ]
+then
+return 1;
+
+elif [ "$redflag" != "0"   ]
+then
+return 2;
+
+else
+echo "Not a supported OS DISTRIBUTION";
+return 3;
+
+
+fi
+
+
+
+}
