@@ -1,0 +1,16 @@
+#!/bin/bash
+configure2 () {
+        echo "Configuring2 vsftpd.conf"
+        declare -a conf_list
+        declare -a conf_bool
+        conf_lst=($(awk 'BEGIN{FS="="}{print $1}' reqconf))
+        conf_bool=($(awk 'BEGIN{FS="="}{print $2}' reqconf))
+        sudo cp /etc/vsftpd/vsftpd.conf /etc/bak
+        for val in {0..1}
+        do
+                sudo sed -ie "/${conf_lst[$val]}/s|#||; /${conf_lst[$val]}/s|YES|${conf_bool[$val]}| ;/${conf_lst[$val]}/s|NO|${conf_bool[$val]}|" /etc/vsftpd/vsftpd.conf
+
+        done
+
+        sudo service vsftpd restart
+}

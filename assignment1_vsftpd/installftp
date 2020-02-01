@@ -1,0 +1,36 @@
+#!/bin/bash
+source deb
+source fed
+name=`cat /etc/os-release |awk 'BEGIN{FS="="}/ID_LIKE/ {print $2}'`
+ftpchk=`dpkg -l vsftpd > /dev/null 2>&1 ; echo $?`
+if [ $ftpchk -eq 0 ]
+then 
+	echo "VSFTPD is already installed"
+	
+        case $name in
+	        debian)
+        	        configure
+			;;
+                fedora)
+			echo "hi"
+                        configure2
+                        ;;
+                *)
+                        echo "OS NOT KNOWN"
+        esac
+else
+	echo "Installing VSFTPD"
+	case $name in
+		debian)
+			sudo apt install vsftpd
+        		;;
+       		fedora)
+               		sudo yum install vsftpd
+               		;;
+       		*)
+               		echo "OS NOT KNOWN"
+       	esac
+
+fi
+
+
